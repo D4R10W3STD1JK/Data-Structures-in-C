@@ -31,6 +31,7 @@ struct node *delete(struct node *head, int value) {
       else
         prev->next = cur->next;
       free(cur);
+      return head;
     }
   }
   return head;
@@ -52,7 +53,7 @@ int main(void) {
   head->data = 10;
 
   while (option != 'q') {
-    printf("a for add, d for delete, s for show: ");
+    printf("a for add, d for delete, s for show, q for quit: ");
     scanf(" %c", &option);
 
     switch (option) {
