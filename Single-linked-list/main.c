@@ -7,8 +7,7 @@ int main(void) {
   int data;
 
   struct node *head;
-  head = malloc(sizeof(struct node));
-  head->data = 10;
+  head = NULL;
 
   while (option != 'q') {
     printf("a for add, d for delete, s for show, q for quit: ");
@@ -27,6 +26,12 @@ int main(void) {
       printf("Insert a value: ");
       scanf(" %d", &data);
       head = delete_element(head, data);
+      break;
+    case 'q':
+      delete_all(head);
+      break;
+    defalult:
+      printf("Option not found\n");
       break;
     }
   }

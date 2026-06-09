@@ -17,7 +17,6 @@ struct node *add(struct node *head, int value) {
 }
 
 struct node *delete_element(struct node *head, int value) {
-
   struct node *cur, *prev;
 
   for (cur = head, prev = NULL; cur != NULL; prev = cur, cur = cur->next) {
@@ -31,6 +30,15 @@ struct node *delete_element(struct node *head, int value) {
     }
   }
   return head;
+}
+
+void delete_all(struct node *head) {
+  struct node *aux;
+  while (head != NULL) {
+    aux = head;
+    head = head->next;
+    free(aux);
+  }
 }
 
 void show(struct node *head) {
