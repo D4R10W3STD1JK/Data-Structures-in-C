@@ -17,7 +17,7 @@ int main(void) {
     case 'a':
       printf("Insert a value: ");
       scanf(" %d", &data);
-      head = add(head, data);
+      add(&head, data);
       break;
     case 's':
       show(head);
@@ -25,7 +25,7 @@ int main(void) {
     case 'd':
       printf("Insert a value: ");
       scanf(" %d", &data);
-      head = delete_element(head, data);
+      delete_element(&head, data);
       break;
     case 'q':
       delete_all(head);

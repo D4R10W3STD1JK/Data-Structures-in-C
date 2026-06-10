@@ -6,8 +6,8 @@ struct node {
   struct node *next;
 };
 
-struct node *add(struct node *head, int value);
-struct node *delete_element(struct node *head, int value);
+int add(struct node **head, int value);
+int delete_element(struct node **head, int value);
 void delete_all(struct node *head);
 void show(struct node *head);
 

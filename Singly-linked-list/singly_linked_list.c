@@ -2,34 +2,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node *add(struct node *head, int value) {
-  struct node *new_node;
-  new_node = malloc(sizeof(struct node));
+int add(struct node **head, int value) {
+  struct node *new_node = malloc(sizeof(struct node));
 
-  if (new_node == NULL) {
-    printf("Error allocating node\n");
-    exit(EXIT_FAILURE);
-  }
+  if (new_node == NULL)
+    return 0;
+
   new_node->data = value;
-  new_node->next = head;
-
-  return new_node;
+  new_node->next = *head;
+  *head = new_node;
+  return 1;
 }
 
-struct node *delete_element(struct node *head, int value) {
-  struct node *cur, *prev;
+int delete_element(struct node **head, int value) {
+  struct node **indirect = head;
 
-  for (cur = head, prev = NULL; cur != NULL; prev = cur, cur = cur->next) {
-    if (cur->data == value) {
-      if (prev == NULL)
-        head = head->next;
-      else
-        prev->next = cur->next;
-      free(cur);
-      return head;
-    }
-  }
-  return head;
+  while (*indirect != NULL && (*indirect)->data != value)
+    indirect = &(*indirect)->next;
+
+  if (*indirect == NULL)
+    return 0;
+
+  struct node *aux = *indirect;
+
+  *indirect = aux->next;
+  free(aux);
+
+  return 1;
 }
 
 void delete_all(struct node *head) {
