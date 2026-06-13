@@ -10,5 +10,6 @@ int add(struct node **head, int value);
 int delete_element(struct node **head, int value);
 void delete_all(struct node *head);
 void show(struct node *head);
+void invert(struct node **head);
 
 #endif

@@ -10,7 +10,7 @@ int main(void) {
   head = NULL;
 
   while (option != 'q') {
-    printf("a for add, d for delete, s for show, q for quit: ");
+    printf("a for add, d for delete, s for show, i for invert, q for quit: ");
     scanf(" %c", &option);
 
     switch (option) {
@@ -26,6 +26,9 @@ int main(void) {
       printf("Insert a value: ");
       scanf(" %d", &data);
       delete_element(&head, data);
+      break;
+    case 'i':
+      invert(&head);
       break;
     case 'q':
       delete_all(head);
