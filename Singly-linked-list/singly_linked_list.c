@@ -32,11 +32,9 @@ int delete_element(struct node **head, int value) {
 }
 
 void invert(struct node **head) {
-  struct node **indirect = head;
-  struct node *prev, *cur, *next;
-
-  cur = *indirect;
-  prev = NULL;
+  struct node *next = NULL;
+  struct node *cur = *head;
+  struct node *prev = NULL;
 
   while (cur != NULL) {
     next = cur->next;
@@ -45,7 +43,7 @@ void invert(struct node **head) {
     prev = cur;
     cur = next;
   }
-  *indirect = prev;
+  *head = prev;
 }
 
 void delete_all(struct node *head) {
