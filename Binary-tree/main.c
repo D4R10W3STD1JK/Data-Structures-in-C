@@ -9,6 +9,7 @@ struct Node {
 
 struct Node *newNode(int value);
 void preOrder(struct Node *root);
+void postOrder(struct Node *root);
 
 int main() {
 
@@ -20,8 +21,15 @@ int main() {
 
   root->left->left = newNode(99);
 
+  printf("-------------------------\n");
+  printf("Start preOrder\n");
+  printf("-------------------------\n");
   preOrder(root);
 
+  printf("-------------------------\n");
+  printf("Start postOrder\n");
+  printf("-------------------------\n");
+  postOrder(root);
   return 0;
 }
 
@@ -41,4 +49,14 @@ void preOrder(struct Node *node) {
 
   preOrder(node->left);
   preOrder(node->right);
+}
+
+void postOrder(struct Node *node) {
+  if (node == NULL)
+    return;
+
+  postOrder(node->left);
+  postOrder(node->right);
+
+  printf("Value: %d\n", node->value);
 }
