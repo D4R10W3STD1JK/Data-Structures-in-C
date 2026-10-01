@@ -1,15 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-
-struct Node {
-  int value;
-  struct Node *left;
-  struct Node *right;
-};
-
-struct Node *newNode(int value);
-void preOrder(struct Node *root);
-void postOrder(struct Node *root);
+#include "binary_tree.h"
 
 int main() {
 
@@ -31,32 +20,4 @@ int main() {
   printf("-------------------------\n");
   postOrder(root);
   return 0;
-}
-
-struct Node *newNode(int value) {
-  struct Node *node = malloc(sizeof(struct Node));
-  node->value = value;
-  node->left = NULL;
-  node->right = NULL;
-  return node;
-}
-
-void preOrder(struct Node *node) {
-  if (node == NULL)
-    return;
-
-  printf("Value: %d\n", node->value);
-
-  preOrder(node->left);
-  preOrder(node->right);
-}
-
-void postOrder(struct Node *node) {
-  if (node == NULL)
-    return;
-
-  postOrder(node->left);
-  postOrder(node->right);
-
-  printf("Value: %d\n", node->value);
 }
